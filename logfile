@@ -1,0 +1,7 @@
+2020-01-21 16:05:24.499 EST [8696] LOG:  starting PostgreSQL 12.1 on x86_64-apple-darwin19.2.0, compiled by Apple clang version 11.0.0 (clang-1100.0.33.16), 64-bit
+2020-01-21 16:05:24.502 EST [8696] LOG:  listening on IPv6 address "::1", port 5432
+2020-01-21 16:05:24.502 EST [8696] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2020-01-21 16:05:24.503 EST [8696] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2020-01-21 16:05:24.514 EST [8697] LOG:  database system was shut down at 2020-01-21 16:04:45 EST
+2020-01-21 16:05:24.518 EST [8696] LOG:  database system is ready to accept connections
+2020-01-21 16:05:37.661 EST [8734] FATAL:  database "pokemon_trader_development" does not exist
