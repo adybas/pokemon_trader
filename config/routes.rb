@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
+  get '/about' => 'welcome#about'
 
   resources :trainers, only: [:new, :create]
   resources :cards, only: [:index, :show]
