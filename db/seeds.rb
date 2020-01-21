@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'pokemon_tcg_sdk'
+require 'pry'
+#cards = Pokemon::Card.all
+
+#create hash with key pairs
+
+cards.map do |pokemon|
+    pokemon.name
+    pokemon.image_url
+    pokemon.hp
+    pokemon.national_pokedex_number
+    pokemon.rarity
+    pokemon.evolves_from
+end
