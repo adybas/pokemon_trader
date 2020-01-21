@@ -16,10 +16,11 @@
             <div><h3>
             <img src=<%=@card.image_url%>><br>
             Rarity:<%= @card.rarity%><br>
-            <% if @card.%>
+            <% if @card.hp && @card.national_pokedex_number && @card.evolves_from%>
             HP:<%= @card.hp %><br>
             National Pokedex Number: <%= @card.national_pokedex_number%><br>
             Evolves from:<%= @card.evolves_from %>
+            <% end %>
             </h3></div>
             <%= link_to("Go back to card index", cards_path)%>
     </body>
