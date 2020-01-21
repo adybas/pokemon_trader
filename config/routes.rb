@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
   get '/about' => 'welcome#about'
+  get '/trainers/home' => 'trainers#home'
 
   resources :trainers, only: [:new, :create]
   resources :cards, only: [:index, :show]
