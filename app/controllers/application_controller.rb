@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
 
     before_action :current_trainer
 
+    helper_method :current_trainer 
+
     def current_trainer
 
         #either has a new trainer object to use temporarily or carries login info
