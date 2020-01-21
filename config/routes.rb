@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   post '/logout' => 'sessions#destroy'
 
   resources :trainers, only: [:new, :create]
+  resources :cards, only: [:index, :show]
 end
