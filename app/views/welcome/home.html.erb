@@ -18,8 +18,8 @@
         <% if session[:user_id]%>
             <%=link_to("Go to your dashboard", trainer_home_path)%><br>
         <% end %>
-
-        <%= link_to("Go to login page", login_path)%>
+        <p><%=link_to("Check out all the cards!", cards_path) %></p>
+        <p><%= link_to("Go to login page", login_path)%></p>
         <div><p><%= link_to("Go to about page", about_path)%></p></div>
     </body>
 </html>
