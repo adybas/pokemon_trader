@@ -1,6 +1,6 @@
 class TrainersController < ApplicationController
 
-    before_action :login_check 
+    before_action :login_check, except: [:new]
 
     def new  
         @trainer = Trainer.new   
