@@ -7,14 +7,22 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'pokemon_tcg_sdk'
 require 'pry'
+Card.destroy_all
+
 cards = Pokemon::Card.all
 
-cards.map do |pokemon|
+cards.delete_if do |pokemon|
+    pokemon.national_pokedex_number == nil
+end
+#binding.pry
+
+cards.each do |pokemon|
     name = pokemon.name
     image = pokemon.image_url
     hp = pokemon.hp
     national_pokedex_number = pokemon.national_pokedex_number
     rarity = pokemon.rarity
     evolves_from = pokemon.evolves_from
-    Card.find_or_create_by(name: name, image_url: image, hp: hp, national_pokedex_number: national_pokedex_number, rarity: rarity, evolves_from: evolves_from)
+    Card.create(name: name, image_url: image, hp: hp, national_pokedex_number: national_pokedex_number, rarity: rarity, evolves_from: evolves_from)
 end
+
