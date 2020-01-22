@@ -16,12 +16,15 @@
 
         <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
             <input type=submit value='logout'>
-        <% end %>
-        
+         <% end %>
         <div>
              <%= form_tag ({controller: 'trainers', action: 'pack_contents', method: 'post'}) do %>
             <input type=submit value='Open a pack'>
-        <% end %>
+            <% end %>
+        </div>
+
+        <div>
+            <%= link_to("Go back to welcome page", root_path) %>
         </div>
 
         <div>
