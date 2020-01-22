@@ -1,0 +1,10 @@
+<%= form_for @trade do |t|%>
+    <label>Which Pokemon would you like to offer? </label><br>
+    <%= f.collection_select :offer_card_ids, @trainer.cards_up_for_trade, :id, :name %> <br>
+    
+    <%= f.submit %>
+<% end %>
+
+
+
+

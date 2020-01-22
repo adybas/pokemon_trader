@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
     helper_method :current_trainer 
 
     def current_trainer
-
         #either has a new trainer object to use temporarily or carries login info
         @trainer = (Trainer.find_by(id: session[:user_id]) || Trainer.new )
     end 
