@@ -16,7 +16,7 @@
         <h1>Welcome To the Pokemon Card Trader!</h1>
 
         <% if session[:user_id]%>
-            <%=link_to("Go to your dashboard", trainer_home_path)%><br>
+            <%=link_to("Go to your dashboard", trainers_home_path)%><br>
         <% end %>
         <p><%=link_to("Check out all the cards!", cards_path) %></p>
         <p><%= link_to("Go to login page", login_path)%></p>

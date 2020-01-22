@@ -17,5 +17,20 @@
         <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
             <input type=submit value='logout'>
         <% end %>
+        
+        <div>
+             <%= form_tag ({controller: 'trainers', action: 'pack_contents', method: 'post'}) do %>
+            <input type=submit value='Open a pack'>
+        <% end %>
+        </div>
+
+        <div>
+            <h2>Here is your card album!</h2><br>
+
+            <% @all_cards_album.each do |card| %>
+
+            <%= link_to(card.name, card_path(card))%>
+            <% end %>
+        </div>
     </body>
 </html>

@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   get '/about' => 'welcome#about'
   get '/trainers/home' => 'trainers#home'
 
+  post '/trainers/pack_contents' => 'trainers#pack_contents'
+  get '/trainers/pack_open' => 'trainers#pack_open'
+
+
   resources :trainers, only: [:new, :create]
   resources :cards, only: [:index, :show]
 end
