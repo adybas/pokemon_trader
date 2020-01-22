@@ -1,9 +1,9 @@
 class Trainer < ApplicationRecord
-
     has_secure_password
     has_many :card_binders 
     has_many :cards, through: :card_binders
 
+<<<<<<< HEAD
 
     
     def open_a_pack 
@@ -33,4 +33,9 @@ class Trainer < ApplicationRecord
     end 
 
     private 
+=======
+    has_many :trades
+    has_many :senders, through: :trades
+    has_many :receivers, through: :trades
+>>>>>>> 0e6c6d35999019a8d13b273f60536dd052b37179
 end
