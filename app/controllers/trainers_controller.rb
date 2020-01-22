@@ -20,11 +20,9 @@ class TrainersController < ApplicationController
 
     def pack_open 
         @pack = @trainer.pack_card_return_to_object(session[:new_pack])
-
     end 
 
     def pack_contents
-
         session[:new_pack] = nil 
         new_pack = @trainer.open_a_pack
         @trainer.cards << new_pack 

@@ -8,11 +8,9 @@ class Trainer < ApplicationRecord
     has_many :receivers, through: :trades
 
     
-    def open_a_pack 
-        
+    def open_a_pack  
         #used to get a random array of 15 cards for the trainer 
         pack_array = []
-        
         15.times do 
             
             pack_array <<Card.all.sample 
