@@ -12,10 +12,14 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-        <h1>Homepage for <%= @trainer.name  %> </h1>
-
-
-        <%= link_to("Go back to home page", root_path)%><br>
-        <%= link_to("Go to your dashboard", trainers_home_path)%>
+        <h2>Select the cards you want to trade</h2><br>
+        
+        <%= #form_tag({controller: 'trainers', action: 'mark_trades_for_trainer', method: 'post'}) do |f| %>
+        <%= form_for @trainer do |f|%>
+            <%= collection_check_boxes @trainer, :card_binder_ids, @trainer.card_binders, :id, :display_card_name_from_binder  %><br>
+            <input type="submit" value="Submit your cards for trade">
+        <% end %>
+        <br>
+        <%= link_to("Go back to your dashboard", trainers_home_path)%>
     </body>
 </html>

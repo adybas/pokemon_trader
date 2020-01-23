@@ -22,18 +22,22 @@
             <input type=submit value='Open a pack'>
             <% end %>
         </div>
-
         <div>
             <%= link_to("Go back to welcome page", root_path) %>
         </div>
-
-        <div>
+        <p> <%= link_to("Choose cards to trade!", trainers_mark_trades_path) %>
+        </p>
+        <div class='album'>
             <h2>Here is your card album!</h2><br>
 
             <% @all_cards_album.each do |card| %>
 
             <%= link_to(card.name, card_path(card))%>
             <% end %>
+        </div>
+        <div>
+            <h2>Here are your cards for trade!</h2><br>
+            
         </div>
     </body>
 </html>
