@@ -10,9 +10,9 @@ class Trainer < ApplicationRecord
 
     
     def open_a_pack  
-        #used to get a random array of 15 cards for the trainer 
+        #used to get a random array of 6 cards for the trainer 
         pack_array = []
-        15.times do     
+        6.times do     
             pack_array << Card.all.sample 
         end 
         return pack_array 
@@ -36,6 +36,13 @@ class Trainer < ApplicationRecord
             card_binder.for_trade == true
         end
     end
+
+    # returns cards not marked for trade 
+    def cards_not_for_trade
+        self.card_binders.select do |card|
+            card.for_trade == false || card.for_trade == nil 
+        end 
+    end 
     
     private 
 

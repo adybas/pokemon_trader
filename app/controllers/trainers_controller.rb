@@ -41,25 +41,18 @@ class TrainersController < ApplicationController
     end 
 
     def mark_trades
-    
+        @cards_in_binder = @trainer.card_binders 
     end 
 
     def mark_trades_for_trainer 
 
-        @card_set = params[:card_binder_ids]
-        # card_set = trainer_params 
-        # card_set.each do |card_binder_id|
-
-        #     card = CardBinder.find_by(card_binder_id)
-        #     card.for_trade = true 
-        #     card.save
-        # end 
-        byebug 
-        @card_set.each do |card_binder_id|
-            
-            card = CardBinder.find_by(card_binder_id)
-            card.for_trade = true 
-            card.save 
+        card_for_trade = CardBinder.find(params[:cardbinder].to_i)
+        if params["for_trade"] == "1"
+        card_for_trade.update(for_trade: true)
+        card_for_trade.for_trade = true
+        card_for_trade.save 
+        else 
+        card_for_trade.update(for_trade: false)
         end 
 
         redirect_to trainers_home_path
@@ -74,6 +67,6 @@ class TrainersController < ApplicationController
     end 
 
     def trainer_params
-        params.require(:trainer).permit(:name, :password, :password_confirmation, card_binder_ids: [])
+        params.require(:trainer).permit(:name, :password, :password_confirmation, :for_trade, :cardbinder)
     end 
 end
