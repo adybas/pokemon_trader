@@ -16,8 +16,6 @@ Rails.application.routes.draw do
   resources :trainers, only: [:new, :create]
   resources :cards, only: [:index, :show]
 
-  resources :trades, only: [:new, :create]
-
   resources :card_binders do
     resources :trades
   end

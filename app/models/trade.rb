@@ -8,5 +8,11 @@ class Trade < ApplicationRecord
     has_many :offer_cards, class_name: "CardBinder", through: :offers
     has_many :base_cards, class_name: "CardBinder", through: :offers
 
+    # def test
+    #     return self.offer_card_ids ||= nil
+    # end
 
+    # def test=(offer_ids)
+    #     self.offer_card_ids = offer_ids
+    # end
 end

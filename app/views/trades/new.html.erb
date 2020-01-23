@@ -1,8 +1,8 @@
-<%= form_for @trade do |t|%>
+<%= form_tag(card_binder_trades_path, method: "post") do %>
     <label>Which Pokemon would you like to offer? </label><br>
-    <%= f.collection_select :offer_card_ids, @trainer.cards_up_for_trade, :id, :name %> <br>
+    <%= select_tag "[trade][offer_card_ids]", options_for_select(@trainer.cards_up_for_trade.collect{ |u| [u.card_id, u.id] })%> <br>
     
-    <%= f.submit %>
+    <%= submit_tag %>
 <% end %>
 
 

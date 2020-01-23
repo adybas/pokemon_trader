@@ -32,10 +32,8 @@ class Trainer < ApplicationRecord
 
     # returns cards marked for trade
     def cards_up_for_trade
-        self.cards.select do |card|
-            card.card_binders.select do |card_binder|
-                card_binder.for_trade == true
-            end
+        self.card_binders.select do |card_binder|
+            card_binder.for_trade == true
         end
     end
     
