@@ -19,7 +19,6 @@
 
         <ul>
         <% @cards_in_binder.each do |card| %>
-
            <li><%= card.display_card_name_from_binder  %><br>
            Trade Status: 
             <% if card.for_trade == nil %>

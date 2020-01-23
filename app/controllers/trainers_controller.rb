@@ -46,7 +46,7 @@ class TrainersController < ApplicationController
     end 
 
     def mark_trades_for_trainer  
-        card_for_trade = CardBinder.find(params[:cardbinder].to_i)
+        card_for_trade = CardBinder.find(params[:card_binder_id].to_i)
         if params["for_trade"] == "1"
         card_for_trade.update(for_trade: true)
         card_for_trade.for_trade = true
