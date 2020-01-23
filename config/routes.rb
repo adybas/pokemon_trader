@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   #mark cards for trade form 
   get '/trainers/mark_trades' => 'trainers#mark_trades'
   patch '/trainers/mark_trades_for_trainer' => 'trainers#mark_trades_for_trainer'
+
+  #main page to see all trades
+  get '/trades' => 'trades#index'
   
  
   resources :trainers, only: [:new, :create, :show]

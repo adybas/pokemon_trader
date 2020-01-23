@@ -14,7 +14,8 @@
     <body>
         <h2>Select the cards you want to trade</h2><br>
         <br>
-        <%= link_to("Go back to your dashboard", trainers_home_path)%>
+        <%= link_to("Go back to your dashboard", trainers_home_path)%><br>
+        <%= link_to("Go back to welcome page", root_path) %>
 
         <ul>
         <% @cards_in_binder.each do |card| %>
@@ -34,7 +35,7 @@
                 <%= label_tag :for_trade, 'Trade' %>
                 <%= radio_button_tag :for_trade, "0" %>
                 <%= label_tag :for_trade, 'Not For Trade'%>
-                <%= hidden_field_tag :cardbinder, card.id %>
+                <%= hidden_field_tag :card_binder_id, card.id %>
             <input type=submit value='Update Trade Status'>
            <% end %>
            </li><br>

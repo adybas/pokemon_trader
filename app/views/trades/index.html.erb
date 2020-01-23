@@ -12,14 +12,17 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-        <h1>Homepage for <%= @trainer.name  %> </h1>
-        <%= link_to("Go back to home page", root_path)%><br>
-        <%= link_to("Go to your dashboard", trainers_home_path)%><br>
 
-        This trainer has the following cards for trade:
+
+        <h1>Welcome to the Marketplace!</h1><br>
+        <%= link_to("Go back to the Dashboard", trainers_home_path) %>
+
+        <p>These are all the cards currently for trade:</p>
+
         <ul>
-        <% @trainer.cards_up_for_trade.each do |card| %>
-            <li><%= card.display_card_name_from_binder %></li>
+        <% CardBinder.find_all_trades.each do |card| %>
+            <li><%= link_to(card.display_card_name_from_binder, new_card_binder_trade_path(card.id))%> <br>
+            Owned by: <%= link_to(card.display_trainer_name_from_binder, trainer_path(card.trainer) )%></li>
         <% end %>
         </ul>
     </body>

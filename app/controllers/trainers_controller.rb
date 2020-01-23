@@ -46,7 +46,7 @@ class TrainersController < ApplicationController
 
     def mark_trades_for_trainer 
 
-        card_for_trade = CardBinder.find(params[:cardbinder].to_i)
+        card_for_trade = CardBinder.find(params[:card_binder_id].to_i)
         if params["for_trade"] == "1"
         card_for_trade.update(for_trade: true)
         card_for_trade.for_trade = true
@@ -54,7 +54,6 @@ class TrainersController < ApplicationController
         else 
         card_for_trade.update(for_trade: false)
         end 
-
         redirect_to trainers_home_path
     end 
 
@@ -67,6 +66,6 @@ class TrainersController < ApplicationController
     end 
 
     def trainer_params
-        params.require(:trainer).permit(:name, :password, :password_confirmation, :for_trade, :cardbinder)
+        params.require(:trainer).permit(:name, :password, :password_confirmation, :for_trade, :card_binder_id)
     end 
 end

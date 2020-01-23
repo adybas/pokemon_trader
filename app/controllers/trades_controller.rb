@@ -15,6 +15,10 @@ class TradesController < ApplicationController
         redirect_to '/trainers/home'
     end
 
+    def index 
+
+    end 
+
     private
 
     def trade_params
