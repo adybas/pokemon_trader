@@ -13,13 +13,32 @@
     </head>
     <body>
         <h2>Select the cards you want to trade</h2><br>
-        
-        <%= #form_tag({controller: 'trainers', action: 'mark_trades_for_trainer', method: 'post'}) do |f| %>
-        <%= form_for @trainer do |f|%>
-            <%= collection_check_boxes @trainer, :card_binder_ids, @trainer.card_binders, :id, :display_card_name_from_binder  %><br>
-            <input type="submit" value="Submit your cards for trade">
-        <% end %>
         <br>
         <%= link_to("Go back to your dashboard", trainers_home_path)%>
+
+        <ul>
+        <% @cards_in_binder.each do |card| %>
+
+           <li><%= card.display_card_name_from_binder  %><br>
+           Trade Status: 
+            <% if card.for_trade == nil %>
+            Not for trade 
+            <% elsif card.for_trade == false %>
+            Not for trade 
+            <% elsif card.for_trade == true %>
+            In trade pile 
+            <% end %>
+
+           <%= form_with model: card, url: trainers_mark_trades_for_trainer_path do |f| %>
+                <%= radio_button_tag :for_trade, "1" %>
+                <%= label_tag :for_trade, 'Trade' %>
+                <%= radio_button_tag :for_trade, "0" %>
+                <%= label_tag :for_trade, 'Not For Trade'%>
+                <%= hidden_field_tag :cardbinder, card.id %>
+            <input type=submit value='Update Trade Status'>
+           <% end %>
+           </li><br>
+        <% end %>
+        </ul>
     </body>
 </html>

@@ -10,8 +10,17 @@ class Trainer < ApplicationRecord
 
     
     def open_a_pack  
+<<<<<<< HEAD
         #used to get a random array of cards for the trainer 
         Card.all.sample(6)
+=======
+        #used to get a random array of 6 cards for the trainer 
+        pack_array = []
+        6.times do     
+            pack_array << Card.all.sample 
+        end 
+        return pack_array 
+>>>>>>> 4f81c40e59e3be3849957840a7b102b0fd0fadd7
     end 
 
     def pack_card_id_only(pack_array)
@@ -32,6 +41,18 @@ class Trainer < ApplicationRecord
             card_binder.for_trade == true
         end
     end
+<<<<<<< HEAD
+=======
+
+    # returns cards not marked for trade 
+    def cards_not_for_trade
+        self.card_binders.select do |card|
+            card.for_trade == false || card.for_trade == nil 
+        end 
+    end 
+    
+    private 
+>>>>>>> 4f81c40e59e3be3849957840a7b102b0fd0fadd7
 
     #returns trades for this trainer
     def received_trades(arg)
