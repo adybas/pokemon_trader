@@ -16,4 +16,8 @@ class CardBinder < ApplicationRecord
     def display_card_name_from_binder
         self.find_card_in_binder.name 
     end 
+
+    def card_owner_name
+        self.trainer.name 
+    end 
 end

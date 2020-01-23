@@ -1,9 +1,11 @@
 class CardBindersController < ApplicationController
 
-    before_action :login_check, :find_cardbinder
+    before_action :login_check, only: [:edit, :update]
+    before_action :find_cardbinder, only: [:edit, :update, :show]
 
     def edit 
 
+    
     end 
 
     def update 
@@ -13,10 +15,15 @@ class CardBindersController < ApplicationController
     end 
 
 
+    def show 
+
+    end 
+
+
     private 
 
     def find_cardbinder
-        @card_binder = CardBinder.find_by(params[:id])
+        @card_binder = CardBinder.find(params[:id])
     end 
 
     def card_binder_params 

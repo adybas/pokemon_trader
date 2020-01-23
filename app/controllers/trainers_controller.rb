@@ -26,6 +26,7 @@ class TrainersController < ApplicationController
     def home 
         @all_cards_album = @trainer.cards
         @all_card_up_for_trade = @trainer.cards_up_for_trade 
+        @cards_not_for_trade = @trainer.cards_not_for_trade
     end 
 
     def pack_open 
@@ -41,13 +42,20 @@ class TrainersController < ApplicationController
     end 
 
     def mark_trades
-
+        # <%= f.radio_button :for_trade, true :checked => true %>
         @cards_in_binder = @trainer.card_binders 
     end 
 
     def mark_trades_for_trainer 
 
-
+        card_for_trade = CardBinder.find(params[:cardbinder].to_i)
+        if params["for_trade"] == "1"
+        card_for_trade.update(for_trade: "1")
+        card_for_trade.for_trade = "1" 
+        card_for_trade.save 
+        else 
+        card_for_trade.update(for_trade: "0")
+        end 
 
         redirect_to trainers_home_path
     end 
@@ -61,6 +69,6 @@ class TrainersController < ApplicationController
     end 
 
     def trainer_params
-        params.require(:trainer).permit(:name, :password, :password_confirmation)
+        params.require(:trainer, :card_binder).permit(:name, :password, :password_confirmation, :for_trade, :cardbinder)
     end 
 end

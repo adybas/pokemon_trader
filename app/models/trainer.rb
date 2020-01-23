@@ -33,9 +33,16 @@ class Trainer < ApplicationRecord
     # returns cards marked for trade
     def cards_up_for_trade
         self.card_binders.select do |card_binder|
-            card_binder.for_trade == true
+            card_binder.for_trade == "1"
         end
     end
+
+    # returns cards not marked for trade 
+    def cards_not_for_trade
+        self.card_binders.select do |card|
+            card.for_trade == 0 || card.for_trade == nil 
+        end 
+    end 
     
     private 
 

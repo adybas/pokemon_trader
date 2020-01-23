@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_22_153713) do
+ActiveRecord::Schema.define(version: 2020_01_23_183825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_01_22_153713) do
   create_table "card_binders", force: :cascade do |t|
     t.integer "trainer_id"
     t.integer "card_id"
-    t.boolean "for_trade"
+    t.string "for_trade"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

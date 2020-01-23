@@ -28,11 +28,16 @@
             <% elsif card.for_trade == true %>
             In trade pile 
             <% end %>
+            <%=link_to("Edit this card", edit_card_binder_path(card)) %>
            
 
-           <%= form_tag ({controller: 'card_binders', action: 'update', method: 'patch'}) do |f| %>
-            <%= f.radio_button :for_trade, true :checked => true %>
-            <%= f.submit "Mark Card for trade"%>
+           <%= form_with model: card, url: trainers_mark_trades_for_trainer_path do |f| %>
+                <%= radio_button_tag :for_trade, "1" %>
+                <%= label_tag :for_trade, 'Trade' %>
+                <%= radio_button_tag :for_trade, "0" %>
+                <%= label_tag :for_trade, 'Not For Trade'%>
+                <%= hidden_field_tag :cardbinder, card.id %>
+            <input type=submit value='Update Trade Status'>
            <% end %>
            </li><br>
         <% end %>
