@@ -24,7 +24,8 @@ class TrainersController < ApplicationController
     end 
 
     def home 
-        @all_cards_album = @trainer.cards 
+        @all_cards_album = @trainer.cards
+        @all_card_up_for_trade = @trainer.cards_up_for_trade 
     end 
 
     def pack_open 
