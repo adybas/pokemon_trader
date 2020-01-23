@@ -37,11 +37,22 @@
             <%= link_to(card.name, card_path(card))%>
             <% end %>
         </div>
-        
+
         <div>
             <h2>Here are your cards for trade!</h2><br>
             <% @all_card_up_for_trade.each do |card| %>
                 <%= card.display_card_name_from_binder %>
+            <% end %>
+
+            <h2>Here are your offers!</h2>
+            <% @pending_trades.each do |trade|%>
+                <% sender = Trainer.find_by(id: trade.sender_id) %>
+                <%= link_to sender.name, trainer_path(sender) %>
+                would like to trade their
+                <% offer = Offer.find_by(trade_id: trade.id) %>
+                <%= offer.offer_card.display_card_name_from_binder %>
+                for your 
+                <%= offer.base_card.display_card_name_from_binder %>
             <% end %>
             
         </div>
