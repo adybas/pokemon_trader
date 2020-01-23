@@ -50,3 +50,9 @@
         </div>
     </body>
 </html>
+
+
+received_trades(Trade.pending).each do |trade|
+    Trainer.find_by(id: trade.sender_id)
+    byebug
+end

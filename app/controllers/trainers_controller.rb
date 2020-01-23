@@ -26,7 +26,7 @@ class TrainersController < ApplicationController
     def home 
         @all_cards_album = @trainer.cards
         @all_card_up_for_trade = @trainer.cards_up_for_trade 
-        @cards_offered_back = @trainer.cards_offered_to_trainer
+        @pending_trades = @trainer.eceived_trades(Trade.pending)
     end 
 
     def pack_open 
