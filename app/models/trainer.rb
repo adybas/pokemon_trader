@@ -33,36 +33,37 @@ class Trainer < ApplicationRecord
         end
     end
 
-    # #returns trades for this trainer
-    # def trades_to_trainer(arg)
-    #     arg.select {|trade| trade.receiver_id == self.id}
-    # end
-
-    # #display sending trainers
-    # def find_sending_trainer_id
-    #     trade = self.trades_to_trainer(Trade.pending)
-    #     Trainer.find_by(id: trade.sender_id)
-    # end
-
-    def trades_to_trainer
-        Trade.find_by(receiver_id: self.id)
+    #returns trades for this trainer
+    def trades_to_trainer(arg)
+        arg.select {|trade| trade.receiver_id == self.id}
     end
 
-    def find_sending_trainer_info
-        trade = self.trades_to_trainer
-        trainer_object = Trainer.find_by(id: trade.sender_id) 
-        byebug
+    #display sending trainers
+    def find_sending_trainer_id
+        trade = self.trades_to_trainer(Trade.pending)
+        Trainer.find_by(id: trade.sender_id)
     end
 
-    #display card offered
-    def display_card
-        trainer_offering_card = find_sending_trainer_id
-    end 
+    # def trades_to_trainer
+    #     Trade.find_by(receiver_id: self.id)
+    # end
+
+    # def find_sending_trainer_info
+    #     trade = self.trades_to_trainer
+    #     @trainer_object = Trainer.find_by(id: trade.sender_id)
+    #     @offer_object = Offer.find_by(trade_id: trade.id)
+    # end
+
+    # def find_offer
+    #     trade = self.trades_to_trainer
+    #     Offer.find_by(trade_id: trade.id)
+    # end
 
     #returns cards offered and name
     def cards_offered_to_trainer
-        @sender_name = find_sending_trainer_info.name
-        @offer_card = display_card
+        find_sending_trainer_id
+        # @trainer_object.name
+        # @offer_object.offer_card.display_card_name_from_binder
     end
 
     private 
