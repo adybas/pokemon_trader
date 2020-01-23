@@ -15,4 +15,8 @@ class Trade < ApplicationRecord
     # def test=(offer_ids)
     #     self.offer_card_ids = offer_ids
     # end
+
+    def self.pending
+        Trade.find_by(trade_status: "pending")
+    end
 end

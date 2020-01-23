@@ -35,11 +35,16 @@
             <%= link_to(card.name, card_path(card))%>
             <% end %>
         </div>
-        
+
         <div>
             <h2>Here are your cards for trade!</h2><br>
             <% @all_card_up_for_trade.each do |card| %>
                 <%= card.display_card_name_from_binder %>
+            <% end %>
+
+            <h2>Here are your offers!</h2>
+            <% @cards_offered_back.each do |card|%>
+                <% card.display_card_name_from_binder %>
             <% end %>
             
         </div>

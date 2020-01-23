@@ -10,12 +10,8 @@ class Trainer < ApplicationRecord
 
     
     def open_a_pack  
-        #used to get a random array of 15 cards for the trainer 
-        pack_array = []
-        15.times do     
-            pack_array << Card.all.sample 
-        end 
-        return pack_array 
+        #used to get a random array of cards for the trainer 
+        Card.all.sample(6)
     end 
 
     def pack_card_id_only(pack_array)
@@ -36,7 +32,29 @@ class Trainer < ApplicationRecord
             card_binder.for_trade == true
         end
     end
-    
+
+    #returns trades for this trainer
+    def trades_to_trainer(arg)
+        arg.find_by(receiver_id: self.id)
+    end
+
+    #display sending trainers
+    def find_sending_trainer_id
+        trade = self.trades_to_trainer(Trade.pending)
+        Trainer.find_by(id: trade.sender_id)
+    end
+
+    #display card offered
+    def display_card
+         
+    end 
+
+    #returns cards offered and name
+    def cards_offered_to_trainer
+        @sender_name = find_sending_trainer_id.name
+        @offer_card = display_card
+    end
+
     private 
 
 end
