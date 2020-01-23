@@ -13,7 +13,6 @@ class CardBinder < ApplicationRecord
     end
 
     def display_card_name_from_binder
-        
         self.find_card_in_binder.name 
     end 
 end

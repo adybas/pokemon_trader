@@ -1,10 +1,7 @@
 class TrainersController < ApplicationController
 
     before_action :login_check, except: [:new, :create]
-<<<<<<< HEAD
-=======
     before_action :find_trainer, only: [:show]
->>>>>>> master
 
     def new  
         @trainer = Trainer.new   
