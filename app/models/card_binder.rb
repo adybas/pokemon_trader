@@ -7,7 +7,6 @@ class CardBinder < ApplicationRecord
     has_many :trades, through: :offers
 
     attr_reader :display_card_name_from_binder
-    attr_accessor :for_trade 
 
     def find_card_in_binder
         Card.find_by(id: self.card_id)

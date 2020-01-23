@@ -50,6 +50,7 @@ class TrainersController < ApplicationController
 
         card_for_trade = CardBinder.find(params[:cardbinder].to_i)
         if params["for_trade"] == "1"
+        byebug 
         card_for_trade.update(for_trade: "1")
         card_for_trade.for_trade = "1" 
         card_for_trade.save 
