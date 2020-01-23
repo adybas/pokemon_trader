@@ -43,16 +43,16 @@
             <% end %>
 
             <h2>Here are your offers!</h2>
-            <% @cards_offered_back.each do |card|%>
-                <% card.display_card_name_from_binder %>
+            <% @pending_trades.each do |trade|%>
+                <% sender = Trainer.find_by(id: trade.sender_id) %>
+                <%= link_to sender.name, trainer_path(sender) %>
+                would like to trade their
+                <% offer = Offer.find_by(trade_id: trade.id) %>
+                <%= offer.offer_card.display_card_name_from_binder %>
+                for your 
+                <%= offer.base_card.display_card_name_from_binder %>
             <% end %>
             
         </div>
     </body>
 </html>
-
-
-received_trades(Trade.pending).each do |trade|
-    Trainer.find_by(id: trade.sender_id)
-    byebug
-end

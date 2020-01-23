@@ -26,7 +26,7 @@ class TrainersController < ApplicationController
     def home 
         @all_cards_album = @trainer.cards
         @all_card_up_for_trade = @trainer.cards_up_for_trade 
-        @pending_trades = @trainer.eceived_trades(Trade.pending)
+        @pending_trades = @trainer.received_trades(Trade.pending)
     end 
 
     def pack_open 
@@ -55,7 +55,7 @@ class TrainersController < ApplicationController
         #     card.for_trade = true 
         #     card.save
         # end 
-        byebug 
+        #byebug 
         @card_set.each do |card_binder_id|
             
             card = CardBinder.find_by(card_binder_id)

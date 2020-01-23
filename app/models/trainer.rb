@@ -62,3 +62,9 @@ end
 #     trade = self.trades_to_trainer
 #     Offer.find_by(trade_id: trade.id)
 # end
+
+
+# received_trades(Trade.pending).each do |trade|
+#     Trainer.find_by(id: trade.sender_id)
+#     byebug
+# end
