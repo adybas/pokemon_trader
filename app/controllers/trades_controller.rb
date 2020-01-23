@@ -6,7 +6,7 @@ class TradesController < ApplicationController
     end
 
     def create
-        card_binder_id = CardBinder.find(params[:card_binder_id]).id
+        receiver_id = CardBinder.find(params[:card_binder_id]).id
         byebug
         sender_id = @trainer.id
         trade_status = "pending"

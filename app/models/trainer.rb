@@ -13,7 +13,7 @@ class Trainer < ApplicationRecord
         #used to get a random array of 15 cards for the trainer 
         pack_array = []
         15.times do     
-            pack_array <<Card.all.sample 
+            pack_array << Card.all.sample 
         end 
         return pack_array 
     end 

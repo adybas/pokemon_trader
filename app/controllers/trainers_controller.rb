@@ -1,6 +1,10 @@
 class TrainersController < ApplicationController
 
     before_action :login_check, except: [:new, :create]
+<<<<<<< HEAD
+=======
+    before_action :find_trainer, only: [:show]
+>>>>>>> master
 
     def new  
         @trainer = Trainer.new   
@@ -8,10 +12,18 @@ class TrainersController < ApplicationController
 
     def create 
         @trainer = Trainer.create(trainer_params)
-        return redirect_to controller: 'trainers', action: 'new' unless @trainer.save 
+        return render :new unless @trainer.save 
      
+        if @trainer.save 
         session[:user_id] = @trainer.id 
         redirect_to controller: 'welcome', action: 'home'
+        else 
+            render :new 
+        end 
+    end 
+
+    def show 
+        
     end 
 
     def home 
@@ -30,6 +42,33 @@ class TrainersController < ApplicationController
         redirect_to trainers_pack_open_path(@trainer)
     end 
 
+    def mark_trades
+    
+    end 
+
+    def mark_trades_for_trainer 
+
+        @card_set = params[:card_binder_ids]
+        # card_set = trainer_params 
+        # card_set.each do |card_binder_id|
+
+        #     card = CardBinder.find_by(card_binder_id)
+        #     card.for_trade = true 
+        #     card.save
+        # end 
+        byebug 
+        @card_set.each do |card_binder_id|
+            
+            card = CardBinder.find_by(card_binder_id)
+            card.for_trade = true 
+            card.save 
+        end 
+
+        redirect_to trainers_home_path
+    end 
+
+
+
     private 
 
     def find_trainer 
@@ -37,6 +76,6 @@ class TrainersController < ApplicationController
     end 
 
     def trainer_params
-        params.require(:trainer).permit(:name, :password, :password_confirmation)
+        params.require(:trainer).permit(:name, :password, :password_confirmation, card_binder_ids: [])
     end 
 end
