@@ -14,12 +14,28 @@
     <body>
         <h2>Select the cards you want to trade</h2><br>
         
-        <%= #form_tag({controller: 'trainers', action: 'mark_trades_for_trainer', method: 'post'}) do |f| %>
-        <%= form_for @trainer do |f|%>
-            <%= collection_check_boxes @trainer, :card_binder_ids, @trainer.card_binders, :id, :display_card_name_from_binder  %><br>
-            <input type="submit" value="Submit your cards for trade">
-        <% end %>
-        <br>
         <%= link_to("Go back to your dashboard", trainers_home_path)%>
+
+        <ul>
+        <% @cards_in_binder.each do |card| %>
+
+           <li><%= card.display_card_name_from_binder  %><br>
+           Trade Status: 
+            <% if card.for_trade == nil %>
+            Not for trade 
+            <% elsif card.for_trade == false %>
+            Not for trade 
+            <% elsif card.for_trade == true %>
+            In trade pile 
+            <% end %>
+           
+
+           <%= form_tag ({controller: 'card_binders', action: 'update', method: 'patch'}) do |f| %>
+            <%= f.radio_button :for_trade, true :checked => true %>
+            <%= f.submit "Mark Card for trade"%>
+           <% end %>
+           </li><br>
+        <% end %>
+        </ul>
     </body>
 </html>

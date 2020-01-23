@@ -17,11 +17,12 @@ Rails.application.routes.draw do
 
   #mark cards for trade form 
   get '/trainers/mark_trades' => 'trainers#mark_trades'
-  post '/trainers/mark_trades_in_binder' => 'trainers#mark_trades_for_trainer'
+  # post '/trainers/mark_trades_in_binder' => 'trainers#mark_trades_for_trainer'
   
  
   resources :trainers, only: [:new, :create, :show]
   resources :cards, only: [:index, :show]
+  resources :card_binders, only: [:update]
 
   resources :card_binders do
     resources :trades
