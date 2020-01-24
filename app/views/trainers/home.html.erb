@@ -13,6 +13,13 @@
     </head>
     <body>
         <h1>Trainer Dashboard</h1><br>
+
+        <% if flash.notice %>
+        <div class="ui error message">
+        <%= flash.notice %>
+        </div>
+        <% end  %>
+
         <h2>Hi, Trainer <%= @trainer.name %>. </h2>
 
         <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>

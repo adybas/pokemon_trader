@@ -18,7 +18,7 @@
 
                     <div class="welcome_links">
                         <% if session[:user_id]%>
-                            <%=link_to("Go to your dashboard", trainers_home_path)%><br>
+                            <p><%=link_to("Go to your dashboard", trainers_home_path)%></p>
                             <p><%=link_to("See what cards are for trade", trades_path) %></p>
                         <% else %>
                             <p><%= link_to("Go to login page", login_path)%></p>

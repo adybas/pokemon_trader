@@ -47,7 +47,7 @@ class TradesController < ApplicationController
         @offer.offer_card.update(trainer_id: base_card_owner, for_trade: false)
 
         flash.notice = "You've accepted their trade!"
-        redirect_to root_path #maybe trainers_home_path 
+        redirect_to  trainers_home_path #root_path #maybe trainers_home_path 
     end 
 
     def cancelled_trade
@@ -57,7 +57,7 @@ class TradesController < ApplicationController
         @trade.update(trade_status: "Cancelled")
         @offer.destroy 
         flash.notice = "You declined their trade!"
-        redirect_to root_path #maybe trainers_home_path
+        redirect_to  trainers_home_path #root_path #maybe trainers_home_path
     end 
 
     private
