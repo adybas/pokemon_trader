@@ -33,8 +33,8 @@
             <h2>Here is your card album!</h2><br>
 
             <% @all_cards_album.each do |card| %>
-
             <%= link_to(card.name, card_path(card))%>
+            <img src=<%=card.image_url%>>
             <% end %>
         </div>
 
@@ -42,6 +42,7 @@
             <h2>Here are your cards for trade!</h2><br>
             <% @all_card_up_for_trade.each do |card| %>
                 <%= card.display_card_name_from_binder %>
+                <img src=<%= card.display_card_image_url_from_binder%>>
             <% end %>
 
             <h2>Here are your offers!</h2>

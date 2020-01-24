@@ -24,6 +24,10 @@ class CardBinder < ApplicationRecord
         self.find_trainer_in_binder.name 
     end 
 
+    def display_card_image_url_from_binder
+        self.find_card_in_binder.image_url
+    end 
+
 
     def self.find_all_trades
 
