@@ -13,6 +13,18 @@
     </head>
     <body>
         <h1>Trainer Dashboard</h1><br>
+
+        <% if flash[:notice] %>
+        <div class="ui success message">
+        <%= flash[:notice] %>
+        </div>
+        <% end %>
+        <% if flash[:error] %>
+        <div class="ui error message">
+        <%= flash[:error] %>
+        </div>
+        <% end  %>
+
         <h2>Hi, Trainer <%= @trainer.name %>. </h2>
 
         <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
@@ -28,7 +40,9 @@
         </div>
         <p> <%= link_to("Choose cards to trade!", trainers_mark_trades_path) %>
         </p>
-        <p><%= link_to("See all available trades", trades_path) %>
+        <p>
+        <a class="ui violet circular label"> <%= Offer.all.count %> trades happening now!</a>
+        <%= link_to("See all available trades", trades_path) %>
         </p>
         <p><%= link_to("See all trainers", trainers_path)%>
         </p>

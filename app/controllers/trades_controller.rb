@@ -19,6 +19,7 @@ class TradesController < ApplicationController
         # offer_card = CardBinder.find()
         @offer = Offer.create(trade_id: @trade.id, "offer_card_id" => trade_params["offer_card_ids"], base_card_id: params[:card_binder_id])
         # byebug 
+        flash[:notice] = "You've started a trade!"
         redirect_to '/trainers/home'
     end
 
@@ -45,7 +46,19 @@ class TradesController < ApplicationController
         offer_card_owner = @offer.offer_card.trainer_id.to_i 
         @offer.base_card.update(trainer_id: offer_card_owner, for_trade: false)
         @offer.offer_card.update(trainer_id: base_card_owner, for_trade: false)
-        redirect_to root_path
+
+        flash[:notice] = "You've accepted their trade!"
+        redirect_to  trainers_home_path #root_path #maybe trainers_home_path 
+    end 
+
+    def cancelled_trade
+
+        @trade = Trade.find(params["trade"].to_i)
+        @offer = Offer.find(params["offer"].to_i)
+        @trade.update(trade_status: "Cancelled")
+        @offer.destroy 
+        flash[:error] = "You declined their trade!"
+        redirect_to  trainers_home_path #root_path #maybe trainers_home_path
     end 
 
     private

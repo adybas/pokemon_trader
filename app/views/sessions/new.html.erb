@@ -16,9 +16,9 @@
         <h1>Trainer Login page </h1><br>
 
        
-            <% if flash.notice %>
+            <% if flash[:error] %>
             <div class="ui error message">
-                <%= flash.notice %>
+                <%= flash[:error] %>
             </div>
             <% end  %>
 

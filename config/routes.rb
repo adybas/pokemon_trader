@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   #accept trade path
   # get '/trades/accept_trade' => 'trades#accept_trade'
   post 'trades/accepted_trade' => 'trades#updated_trade'
+
+  #decline trade path
+  post 'trades/cancelled_trade' => 'trades#cancelled_trade'
  
   resources :trainers, only: [:new, :create, :show, :index]
   resources :cards, only: [:index, :show]
