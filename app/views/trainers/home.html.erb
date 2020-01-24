@@ -27,77 +27,116 @@
 
         <h2>Hi, Trainer <%= @trainer.name %>. </h2>
 
-        <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
-            <input type=submit value='logout'>
-         <% end %>
-        <div>
-             <%= form_tag ({controller: 'trainers', action: 'pack_contents', method: 'post'}) do %>
-            <input type=submit value='Open a pack'>
-            <% end %>
-        </div>
-        <div>
-            <%= link_to("Go back to welcome page", root_path) %>
-        </div>
-        <p> <%= link_to("Choose cards to trade!", trainers_mark_trades_path) %>
-        </p>
-        <p>
-        <a class="ui violet circular label"> <%= Offer.all.count %> trades happening now!</a>
-        <%= link_to("See all available trades", trades_path) %>
-        </p>
-        <p><%= link_to("See all trainers", trainers_path)%>
-        </p>
-        
+            <div class="fixed">
+            
+                <ul id="menu-bar">
+
+                   <li style="float:right"> <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+                        <input type=submit value='logout'>
+                    <% end %>
+                    </li>
+
+                    <li>
+                        <%= form_tag ({controller: 'trainers', action: 'pack_contents', method: 'post'}) do %>
+                        <input type=submit value='Open a pack'>
+                        <% end %></li>
+
+                    <li><%= link_to("Go back to welcome page", root_path) %> </li>
+
+                    <li><%= link_to("See all trainers", trainers_path)%></li>
+
+                    <li> <%= link_to("Choose cards to trade!", trainers_mark_trades_path) %></li>
+
+                    
+                    <li> <%= link_to("See all available trades", trades_path) %> </li>
+                    
+                </ul>
+
+
+
         <div class='album'>
             <h2>Here is your card album!</h2><br>
 
-            <div class="pokemon-cards-container">
-            
+            <div class="ui cards">
                 <% @all_cards_album.each do |card| %>
-                    
-                    <div class="pokemon-card">
-                    <%= image_tag(card.image_url) %>
-                        <div class="ui primary button">
-                            <%= link_to card_path(card) do %>
-                            </div>
+
+                    <div class="ui card" id="pokemon-card">
+                    <div class="image">
+                        <%= image_tag(card.image_url) %>
+                    </div>
+                        <div class="ui button" id="pokemon-button">
+                            <%= link_to "Check out my Stats", card_path(card) %>
                         </div>
-                    <div>
+                    </div>
                 <% end %>
-            <% end %>
+            </div>
+                
         </div>
 
         <div>
             <h2>Here are your cards for trade!</h2><br>
-            <div "ui card">
-                <% @all_card_up_for_trade.each do |card| %>
-                    <%= card.display_card_name_from_binder %>
-                    <img src=<%= card.display_card_image_url_from_binder%>>
+            <div class="ui cards">
+                    <% @all_card_up_for_trade.each do |card| %>
+                        <div class="ui card" id="pokemon-card">
+                            <div class="image">
+                                <img src=<%= card.display_card_image_url_from_binder%>>
+                            </div>
+                            </div>
+                    <% end %>
+                </div>
+            </div>
+
+
+            <h2>Here are what other trainers are offering you!</h2>
+            <div class="ui cards">
+                <% @pending_trades.each do |trade|%>
+                    <div class="ui card" id="pokemon-card">
+
+                            <% offer = Offer.find_by(trade_id: trade.id) %>
+
+                            <div class="image">
+                                <img src=<%= offer.offer_card.display_card_image_url_from_binder%>>
+                            </div>
+
+                            <div class="content" >
+                                    <p id="trainer-accept-decline-trade"> Trainer
+                                    <% sender = Trainer.find_by(id: trade.sender_id) %>
+                                    <%= link_to sender.name, trainer_path(sender) %>
+                                    would like to trade their
+                                    <%= offer.offer_card.display_card_name_from_binder %>
+                                    for your 
+                                    <%= offer.base_card.display_card_name_from_binder %>
+                                    </p>
+                            </div>
+
+                            <div class="extra content">
+
+                            <div class="ui buttons">
+                                
+                                    <%= form_with url: trades_accepted_trade_path, :html => {class: "ui button"} do |f| %>
+                                        <%= hidden_field_tag :sender, sender.id %>
+                                        <%= hidden_field_tag :offer, offer.id %>
+                                        <%= hidden_field_tag :trade, trade.id %>
+                                        <input type=submit value='Accept', class: "ui green button" >
+                                    <% end %>
+                                
+                                <div class="or"></div>
+                              
+                                    <%= form_with url: trades_cancelled_trade_path , :html => {class: "ui button"} do |f| %>
+                                        <%= hidden_field_tag :offer, offer.id %>
+                                        <%= hidden_field_tag :trade, trade.id %>
+                                        <input type=submit value='Decline', class: "ui red button" >
+                                    <% end %>
+                               
+                            </div>
+                            </div>
+                        
+
+                    </div>
                 <% end %>
             </div>
-            
-            <h2>Here are what other trainers are offering you!</h2>
-            <% @pending_trades.each do |trade|%>
-                <% sender = Trainer.find_by(id: trade.sender_id) %>
-                <%= link_to sender.name, trainer_path(sender) %>
-                would like to trade their
-                <% offer = Offer.find_by(trade_id: trade.id) %>
-                <%= offer.offer_card.display_card_name_from_binder %>
-                for your 
-                 <%= offer.base_card.display_card_name_from_binder %>
 
-                <%= form_with url: trades_accepted_trade_path do |f| %>
-                <%= hidden_field_tag :sender, sender.id %>
-                <%= hidden_field_tag :offer, offer.id %>
-                <%= hidden_field_tag :trade, trade.id %>
-                <input type=submit value='Accept this trade'>
-                <% end %>
-                <%= form_with url: trades_cancelled_trade_path do |f| %>
-                <%= hidden_field_tag :offer, offer.id %>
-                <%= hidden_field_tag :trade, trade.id %>
-                <input type=submit value='Decline this trade'>
-                <% end %>
-                <br><br>
-            <% end %>
-            
+        </div>
         </div>
     </body>
 </html>

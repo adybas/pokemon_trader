@@ -12,13 +12,16 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
+
         <h1>Trainer registration form</h1>
         <div>
-        <%= form_for @trainer, controller:'trainers', action:'create' do |f|%>
+        <%= form_for @trainer, controller:'trainers', action:'create', :html => {:class => "ui large form"}  do |f|%>
             <%= f.label :name %><%= f.text_field :name %><br>
             <%= f.label :password %><%= f.password_field :password %><br>
             <%= f.label :password_confirmation %><%= f.password_field :password_confirmation%><br>
-            <%= f.submit "Create" %>
+            <br>
+            <%= f.submit "Create", class: "ui yellow button" %>
+            
         <% end %>
         </div>
         
