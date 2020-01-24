@@ -33,8 +33,10 @@
             <h2>Here is your card album!</h2><br>
 
             <% @all_cards_album.each do |card| %>
-            <%= link_to(card.name, card_path(card))%>
-            <img src=<%=card.image_url%>>
+ 
+            <%= link_to card_path(card) do %>
+            <%= image_tag(card.image_url) %>
+            <% end %>
             <% end %>
         </div>
 
