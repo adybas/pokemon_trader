@@ -14,25 +14,37 @@
     <body>
 
         <h1>Trainer Login page </h1><br>
-        <% if flash.notice %>
-            <%= flash.notice %>
-        <% end  %>
+
+       
+            <% if flash.notice %>
+            <div class="ui error message">
+                <%= flash.notice %>
+            </div>
+            <% end  %>
+
+
         <div class="ui large form">
-            <%= form_for @trainer, url: login_path, method: :post do |f| %>
-                <div class="field error">
+        <%= form_for @trainer, url: login_path, method: :post,:html => {:class => "ui form error"}  do |f| %>
+                <div class="field">
                     <%= f.label :name %>
                     <%= f.text_field :name%><br>
                 </div>
-                <div class="field error">
+                <div class="field">
                     <%= f.label :password %>
                     <%= f.password_field :password %><br>
-                    </div>
-                <%= f.submit "Login" %><br>
-                Or:
-                <div>
-                <%= link_to(controller: 'trainers', action: 'new') { 'sign up' } %></div>
-            <% end %>
-        </div>
-        <%= link_to("Go back to the home page", root_path)%>
+                </div>
+                <div class="ui  large buttons">
+                    <%= f.submit "login", class: "ui yellow button" %><br>   
+                        <div class="ui secondary button">
+                            <%= link_to(controller: 'trainers', action: 'new') { 'sign up' } %>
+                        </div>
+                    <% end %>
+                <button class="ui labeled icon button">
+                    <i class="home icon"></i>
+                    <%= link_to("Go back to the home page", root_path)%>
+                    </button>
+                </div>
+            </div>
     </body>
 </html>
+

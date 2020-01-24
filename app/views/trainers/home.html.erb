@@ -32,14 +32,22 @@
         </p>
         <p><%= link_to("See all trainers", trainers_path)%>
         </p>
+        
         <div class='album'>
             <h2>Here is your card album!</h2><br>
 
-            <% @all_cards_album.each do |card| %>
- 
-            <%= link_to card_path(card) do %>
-            <%= image_tag(card.image_url) %>
-            <% end %>
+            <div class="pokemon-cards-container">
+            
+                <% @all_cards_album.each do |card| %>
+                    
+                    <div class="pokemon-card">
+                    <%= image_tag(card.image_url) %>
+                        <div class="ui primary button">
+                            <%= link_to card_path(card) do %>
+                            </div>
+                        </div>
+                    <div>
+                <% end %>
             <% end %>
         </div>
 
