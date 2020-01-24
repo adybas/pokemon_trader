@@ -17,17 +17,22 @@
         <% if flash.notice %>
             <%= flash.notice %>
         <% end  %>
-        <%= form_for @trainer, url: login_path, method: :post do |f| %>
-            <%= f.label :name %>
-            <%= f.text_field :name%><br>
-            <%= f.label :password %>
-            <%= f.password_field :password %><br>
-            <%= f.submit "Login" %><br>
-            Or:
-            <div>
-            <%= link_to(controller: 'trainers', action: 'new') { 'sign up' } %></div>
-        <% end %>
-
+        <div class="ui large form">
+            <%= form_for @trainer, url: login_path, method: :post do |f| %>
+                <div class="field error">
+                    <%= f.label :name %>
+                    <%= f.text_field :name%><br>
+                </div>
+                <div class="field error">
+                    <%= f.label :password %>
+                    <%= f.password_field :password %><br>
+                    </div>
+                <%= f.submit "Login" %><br>
+                Or:
+                <div>
+                <%= link_to(controller: 'trainers', action: 'new') { 'sign up' } %></div>
+            <% end %>
+        </div>
         <%= link_to("Go back to the home page", root_path)%>
     </body>
 </html>
