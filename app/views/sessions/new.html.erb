@@ -12,10 +12,11 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-        <% if flash.notice %>
 
-        <% end  %>
         <h1>Trainer Login page </h1><br>
+        <% if flash.notice %>
+            <%= flash.notice %>
+        <% end  %>
         <%= form_for @trainer, url: login_path, method: :post do |f| %>
             <%= f.label :name %>
             <%= f.text_field :name%><br>
