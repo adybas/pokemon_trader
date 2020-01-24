@@ -12,7 +12,8 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-        <h1>Hi, <%= @trainer.name %>. </h1>
+        <h1>Trainer Dashboard</h1><br>
+        <h2>Hi, Trainer <%= @trainer.name %>. </h2>
 
         <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
             <input type=submit value='logout'>

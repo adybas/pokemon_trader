@@ -18,11 +18,14 @@
         <%= link_to("Go back to the Dashboard", trainers_home_path) %>
 
         <p>These are all the cards currently for trade:</p>
-
         <ul>
         <% CardBinder.find_all_trades.each do |card| %>
-            <li><%= link_to(card.display_card_name_from_binder, new_card_binder_trade_path(card.id))%> <br>
-            Owned by: <%= link_to(card.display_trainer_name_from_binder, trainer_path(card.trainer) )%></li>
+            <li>
+            <%= link_to new_card_binder_trade_path(card.id) do %>
+            <%= image_tag(card.display_card_image_url_from_binder) %>
+            <% end %>
+            Owned by: <%= link_to(card.display_trainer_name_from_binder, trainer_path(card.trainer) )%>
+            </li>
         <% end %>
         </ul>
     </body>

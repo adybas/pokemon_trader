@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   get '/trades' => 'trades#index'
 
   #accept trade path
-  get '/trades/accept_trade' => 'trades#accept_trade'
+  # get '/trades/accept_trade' => 'trades#accept_trade'
   post 'trades/accepted_trade' => 'trades#updated_trade'
  
   resources :trainers, only: [:new, :create, :show]
