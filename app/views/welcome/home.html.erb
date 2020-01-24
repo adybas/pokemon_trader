@@ -13,16 +13,24 @@
     </head>
     <body>
 
-        <h1>Welcome To The Pokemon Card Trader!</h1>
+        <div class="ui heading primary">
+                <h1>Welcome To The Pokemon Card Trader!</h1>
 
-        <% if session[:user_id]%>
-            <%=link_to("Go to your dashboard", trainers_home_path)%><br>
-             <p><%=link_to("See what cards are for trade", trades_path) %></p>
-        <% else %>
-            <p><%= link_to("Go to login page", login_path)%></p>
-        <% end %>
-        <p><%=link_to("Check out all the cards!", cards_path) %></p>
-       
-        <div><p><%= link_to("Go to about page", about_path)%></p></div>
+                    <div class="welcome_links">
+                        <% if session[:user_id]%>
+                            <%=link_to("Go to your dashboard", trainers_home_path)%><br>
+                            <p><%=link_to("See what cards are for trade", trades_path) %></p>
+                        <% else %>
+                            <p><%= link_to("Go to login page", login_path)%></p>
+                        <% end %>
+                        <p><%=link_to("Check out all the cards!", cards_path) %></p>
+                    
+                        <div><p><%= link_to("Go to about page", about_path)%></p></div>
+                    </div>
+                    
+                    <div id="main_logo">
+                        <img src="https://images.pokemontcg.io/base1/symbol.png">
+                    </div>
+        </div>
     </body>
 </html>

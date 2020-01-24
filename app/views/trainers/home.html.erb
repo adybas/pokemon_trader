@@ -45,11 +45,13 @@
 
         <div>
             <h2>Here are your cards for trade!</h2><br>
-            <% @all_card_up_for_trade.each do |card| %>
-                <%= card.display_card_name_from_binder %>
-                <img src=<%= card.display_card_image_url_from_binder%>>
-            <% end %>
-
+            <div "ui card">
+                <% @all_card_up_for_trade.each do |card| %>
+                    <%= card.display_card_name_from_binder %>
+                    <img src=<%= card.display_card_image_url_from_binder%>>
+                <% end %>
+            </div>
+            
             <h2>Here are your offers!</h2>
             <% @pending_trades.each do |trade|%>
                 <% sender = Trainer.find_by(id: trade.sender_id) %>
