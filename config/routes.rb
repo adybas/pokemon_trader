@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   # get '/trades/accept_trade' => 'trades#accept_trade'
   post 'trades/accepted_trade' => 'trades#updated_trade'
  
-  resources :trainers, only: [:new, :create, :show]
+  resources :trainers, only: [:new, :create, :show, :index]
   resources :cards, only: [:index, :show]
   resources :trades, only: [:edit, :update]
 
