@@ -20,18 +20,24 @@ body {
     background-color: rgba(216, 211, 204, 0.481);
 }
 
-.pokemon-cards-container {
-    margin: 10px;
-    padding: 15px 15px 60px 15px;
-    border-radius: 25px;
-    background-color: goldenrod;
-}
-
-.pokemon-card img {
-    width: 25vw;
+.pokemon-card-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-gap: 20px;
+    grid-gap: 20px; 
+}
+
+#pokemon-card {
+    /* border: 2px solid  #0037B3; */
+    padding: 1.5vw;
+    background-color :#FFBA13;
+}
+
+#pokemon-button {
+    background-color: #0037B3;
+}
+
+#pokemon-button a {
+    color: white;
 }
 
 .heading {

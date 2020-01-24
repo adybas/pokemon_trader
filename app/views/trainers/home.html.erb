@@ -36,47 +36,57 @@
         <div class='album'>
             <h2>Here is your card album!</h2><br>
 
-            <div class="pokemon-cards-container">
-            
+            <div class="ui cards">
                 <% @all_cards_album.each do |card| %>
-                    
-                    <div class="pokemon-card">
-                    <%= image_tag(card.image_url) %>
-                        <div class="ui primary button">
-                            <%= link_to card_path(card) do %>
-                            </div>
+
+                    <div class="ui card" id="pokemon-card">
+                    <div class="image">
+                        <%= image_tag(card.image_url) %>
+                    </div>
+                        <div class="ui button" id="pokemon-button">
+                            <%= link_to "Check out my Stats", card_path(card) %>
                         </div>
-                    <div>
+                    </div>
                 <% end %>
-            <% end %>
+            </div>
+                
         </div>
 
         <div>
             <h2>Here are your cards for trade!</h2><br>
-            <div "ui card">
-                <% @all_card_up_for_trade.each do |card| %>
-                    <%= card.display_card_name_from_binder %>
-                    <img src=<%= card.display_card_image_url_from_binder%>>
-                <% end %>
+            <div class="ui cards">
+                    <% @all_card_up_for_trade.each do |card| %>
+                        <div class="ui card" id="pokemon-card">
+                            <div class="image">
+                                <img src=<%= card.display_card_image_url_from_binder%>>
+                            </div>
+                            </div>
+                    <% end %>
+                </div>
             </div>
             
             <h2>Here are your offers!</h2>
-            <% @pending_trades.each do |trade|%>
-                <% sender = Trainer.find_by(id: trade.sender_id) %>
-                <%= link_to sender.name, trainer_path(sender) %>
-                would like to trade their
-                <% offer = Offer.find_by(trade_id: trade.id) %>
-                <%= offer.offer_card.display_card_name_from_binder %>
-                for your 
-                 <%= offer.base_card.display_card_name_from_binder %>
-                <%= form_with url: trades_accepted_trade_path do |f| %>
-                <%= hidden_field_tag :sender, sender.id %>
-                <%= hidden_field_tag :offer, offer.id %>
-                <%= hidden_field_tag :trade, trade.id %>
-            <input type=submit value='Accept this trade'>
-                <% end %>
-                <br><br>
-            <% end %>
+            <div class="ui cards">
+                    <% @pending_trades.each do |trade|%>
+                        <div class="ui card" id="pokemon-card">
+                        <% sender = Trainer.find_by(id: trade.sender_id) %>
+                        <%= link_to sender.name, trainer_path(sender) %>
+                        would like to trade their
+                        <% offer = Offer.find_by(trade_id: trade.id) %>
+                        <%= offer.offer_card.display_card_name_from_binder %>
+                        for your 
+                        <%= offer.base_card.display_card_name_from_binder %>
+                        <%= form_with url: trades_accepted_trade_path do |f| %>
+                        <%= hidden_field_tag :sender, sender.id %>
+                        <%= hidden_field_tag :offer, offer.id %>
+                        <%= hidden_field_tag :trade, trade.id %>
+                    <input type=submit value='Accept this trade'>
+                        <% end %>
+                        <br><br>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
             
         </div>
     </body>
