@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
         @trainer = trainer 
         redirect_to controller:'welcome', action:'home'
         else 
-            flash[:notice] = "Incorrect username or password"
+            flash[:error] = "Incorrect username or password"
             return redirect_to(controller:'sessions', action:'new') 
         end 
     end 

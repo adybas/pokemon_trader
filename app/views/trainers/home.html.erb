@@ -14,9 +14,14 @@
     <body>
         <h1>Trainer Dashboard</h1><br>
 
-        <% if flash.notice %>
+        <% if flash[:notice] %>
+        <div class="ui success message">
+        <%= flash[:notice] %>
+        </div>
+        <% end %>
+        <% if flash[:error] %>
         <div class="ui error message">
-        <%= flash.notice %>
+        <%= flash[:error] %>
         </div>
         <% end  %>
 
@@ -67,7 +72,7 @@
                 <% end %>
             </div>
             
-            <h2>Here are your offers!</h2>
+            <h2>Here are what other trainers are offering you!</h2>
             <% @pending_trades.each do |trade|%>
                 <% sender = Trainer.find_by(id: trade.sender_id) %>
                 <%= link_to sender.name, trainer_path(sender) %>
