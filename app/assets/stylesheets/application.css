@@ -53,8 +53,11 @@ body {
     font-size: medium;
 }
 
-.welcome_links {
-    font-size: medium;
+.welcome_links:link, .welcome_links:visited {
+    font-size: large;
+    color: white;
+    position: relative;
+    bottom: 0;
 }
 
 
@@ -87,3 +90,14 @@ body {
     background-color: #111;
   }
 
+.main_logo {
+    max-width: 50%; 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.welcome_page {
+    background-image: url("https://i.pinimg.com/originals/1c/a6/e1/1ca6e1c35e2d884230242cc0326dbf28.jpg");
+    background-size: cover;
+}

@@ -11,32 +11,36 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
     </head>
-    <body>
+    <body class="welcome_page">
                 <% if flash[:notice] %>
                 <div class="ui success message">
                 <%= flash[:notice] %>
                 </div>
                 <% end %>
 
-        <div class="ui heading primary">
-                <h1>Welcome To The Pokemon Card Trader!</h1>
+        <div>
+                <center>
                 
                     <div id="main_logo">
-                        <img src="https://images.pokemontcg.io/base1/symbol.png">
+                        <img src="https://images.pokemontcg.io/base1/symbol.png" class="main_logo">
                     </div>
-                
+                <h1>Welcome To The Pokemon Card Trader!</h1>
+                <br>
+                <a class="ui violet circular label"> <%= Offer.all.count %> trades happening now!</a>
+                    <br><br><br><br><br><br><br>
                     <div class="welcome_links">
                         <% if session[:user_id]%>
-                            <p><%=link_to("Go to your dashboard", trainers_home_path)%></p>
-                            <p><%=link_to("See what cards are for trade", trades_path) %></p>
+                            <button class="ui black button"><%=link_to("Go to your dashboard", trainers_home_path)%></button>
+                            <p></p>
+                            <p><button class="ui black button"><%=link_to("See what cards are for trade", trades_path) %></button></p>
                         <% else %>
-                            <p><%= link_to("Go to login page", login_path)%></p>
+                        <p><button class="ui black button"><%= link_to("Go to login page", login_path)%></button></p>
                         <% end %>
-                        <p><%=link_to("Check out all the cards!", cards_path) %></p>
+                        <p><button class="ui black button"><%=link_to("Check out all the cards!", cards_path) %></button></p>
                     
-                        <div><p><%= link_to("Go to about page", about_path)%></p></div>
+                        <p><button class="ui black button"><%= link_to("Go to about page", about_path)%></button></p>
                     </div>
-                    
+                </center> 
         </div>
     </body>
 </html>

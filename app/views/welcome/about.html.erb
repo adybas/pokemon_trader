@@ -11,12 +11,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
     </head>
-    <body>
+    <body class="welcome_page">
 
     <h2>About this app:</h2>
-    <div>
-    <h3>Created by: John-Louis Rumingan and Anna Dybas </h3></div><br>
-
-    <%= link_to("Go back to home page", root_path)%>
+    <div class="welcome_links">
+    <h3>
+        This app allows you to open packs and trade cards with fellow pokemon trainers.<br>
+        Log in and start trading!
+        <p>Created by: John-Louis Rumingan and Anna Dybas</p> <br>
+        <p>Disclaimer: All images are copyright to their respective owners. </p>
+    </h3>
+    </div>
+    <button class="ui black button"><%= link_to("Go back to home page", root_path)%></button>
     </body>
 </html>
