@@ -11,7 +11,8 @@ class SessionsController < ApplicationController
         if trainer 
         session[:user_id] = trainer.id 
         @trainer = trainer 
-        redirect_to controller:'welcome', action:'home'
+        flash[:notice] = "Successfully logged in!"
+        redirect_to trainers_home_path #controller:'welcome', action:'home'
         else 
             flash[:error] = "Incorrect username or password"
             return redirect_to(controller:'sessions', action:'new') 
