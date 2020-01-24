@@ -53,6 +53,19 @@
                 <%= offer.offer_card.display_card_name_from_binder %>
                 for your 
                  <%= offer.base_card.display_card_name_from_binder %>
+                #Put button to accept trade 
+
+                <%= form_tag ({controller: 'trades', action: 'updated_trade', method: 'post'}) do %>
+            <input type=submit value='Accept this trade'>
+            <% end %>
+
+
+                <%= form_with url: trades_accepted_trade_path do |f| %>
+                <%= hidden_field_tag :sender, sender.id %>
+                <%= hidden_field_tag :offer, offer.id %>
+                <%= hidden_field_tag :trade, trade.id %>
+            <input type=submit value='Update Trade Status'>
+                <% end %>
                 <br><br>
             <% end %>
             

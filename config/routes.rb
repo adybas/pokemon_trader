@@ -21,10 +21,14 @@ Rails.application.routes.draw do
 
   #main page to see all trades
   get '/trades' => 'trades#index'
-  
+
+  #accept trade path
+  get '/trades/accept_trade' => 'trades#accept_trade'
+  post 'trades/accepted_trade' => 'trades#updated_trade'
  
   resources :trainers, only: [:new, :create, :show]
   resources :cards, only: [:index, :show]
+  resources :trades, only: [:edit, :update]
 
   resources :card_binders do
     resources :trades

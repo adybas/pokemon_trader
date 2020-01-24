@@ -31,6 +31,7 @@ class TrainersController < ApplicationController
         # <%= offer.offer_card.display_card_name_from_binder %>
         # for your 
         # <%= offer.base_card.display_card_name_from_binder %>
+        # <%=link_to("Accept this trade", trades_accept_trade_path) %>
     end 
 
     def pack_open 

@@ -26,6 +26,29 @@ class TradesController < ApplicationController
 
     end 
 
+    def edit 
+        @trade = Trade.find_by(params[:id])
+    end 
+
+    def update
+    end 
+
+    def accept_trade 
+
+    end 
+
+    def updated_trade
+
+        @trade = Trade.find(params["trade"].to_i)
+        @offer = Offer.find(params["offer"].to_i)
+        @trade.update(trade_status: "Accepted")
+        base_card_owner = @offer.base_card.trainer_id.to_i 
+        offer_card_owner = @offer.offer_card.trainer_id.to_i 
+        @offer.base_card.update(trainer_id: offer_card_owner, for_trade: false)
+        @offer.offer_card.update(trainer_id: base_card_owner, for_trade: false)
+        redirect_to root_path
+    end 
+
     private
 
     def trade_params
