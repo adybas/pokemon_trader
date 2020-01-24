@@ -1,10 +1,31 @@
-<%= form_tag(card_binder_trades_path, method: "post") do %>
+
+
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+
+    <%= form_tag(card_binder_trades_path, method: "post") do %>
     <label>Which Pokemon would you like to offer? </label><br>
     <%= select_tag "[trade][offer_card_ids]", options_for_select(@trainer.cards_up_for_trade.collect{ |u| [u.display_card_name_from_binder, u.id] })%> <br>
     
     <%= submit_tag %>
-<% end %>
+    <% end %>
+    <br>
+    Changed your mind?<br>
+    <%= link_to("Go back to your dashboard", trainers_home_path) %>
 
 
-
-
+    </body>
+</html>
