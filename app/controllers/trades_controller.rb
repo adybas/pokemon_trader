@@ -10,8 +10,15 @@ class TradesController < ApplicationController
         sender_id = @trainer.id
         trade_status = "pending"
         @trade = Trade.create(receiver_id: receiver_id, sender_id: sender_id, trade_status: trade_status)
-        trade_params["base_card_ids"] = (params[:card_binder_id])
-        @trade.update(trade_params)
+        # trade_params["base_card_id"] = (params[:card_binder_id])
+        # @trade.update(trade_params)
+    
+        # offer.create(trade_id: @trade.id, trade_params )
+        # offer.
+        # Trainer.find(params[:sender_id])
+        # offer_card = CardBinder.find()
+        @offer = Offer.create(trade_id: @trade.id, "offer_card_id" => trade_params["offer_card_ids"], base_card_id: params[:card_binder_id])
+        # byebug 
         redirect_to '/trainers/home'
     end
 

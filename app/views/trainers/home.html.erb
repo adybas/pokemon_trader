@@ -52,7 +52,8 @@
                 <% offer = Offer.find_by(trade_id: trade.id) %>
                 <%= offer.offer_card.display_card_name_from_binder %>
                 for your 
-                <%= offer.base_card.display_card_name_from_binder %>
+                 <%= offer.base_card.display_card_name_from_binder %>
+                <br><br>
             <% end %>
             
         </div>
