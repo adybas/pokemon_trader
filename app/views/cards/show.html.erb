@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
+        <div "ui card">
             <h1>Card info page for <%=@card.name %></h1>
             <div><h3>
             <img src=<%=@card.image_url%>><br>
@@ -24,5 +25,6 @@
             Evolves from:<%= @card.evolves_from %><% end %>
             </h3></div>
             <%= link_to("Go back to card index", cards_path)%>
+        </div>
     </body>
 </html>

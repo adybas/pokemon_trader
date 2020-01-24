@@ -31,11 +31,6 @@ class TrainersController < ApplicationController
         @all_cards_album = @trainer.cards
         @all_card_up_for_trade = @trainer.cards_up_for_trade 
         @pending_trades = @trainer.received_trades(Trade.pending)
-
-        # <%= offer.offer_card.display_card_name_from_binder %>
-        # for your 
-        # <%= offer.base_card.display_card_name_from_binder %>
-        # <%=link_to("Accept this trade", trades_accept_trade_path) %>
     end 
 
     def pack_open 

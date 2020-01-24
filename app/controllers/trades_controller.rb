@@ -38,7 +38,6 @@ class TradesController < ApplicationController
     end 
 
     def updated_trade
-
         @trade = Trade.find(params["trade"].to_i)
         @offer = Offer.find(params["offer"].to_i)
         @trade.update(trade_status: "Accepted")
