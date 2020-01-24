@@ -27,26 +27,33 @@
 
         <h2>Hi, Trainer <%= @trainer.name %>. </h2>
 
-        <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
-            <input type=submit value='logout'>
-         <% end %>
-        <div>
-             <%= form_tag ({controller: 'trainers', action: 'pack_contents', method: 'post'}) do %>
-            <input type=submit value='Open a pack'>
-            <% end %>
-        </div>
-        <div>
-            <%= link_to("Go back to welcome page", root_path) %>
-        </div>
-        <p> <%= link_to("Choose cards to trade!", trainers_mark_trades_path) %>
-        </p>
-        <p>
-        <a class="ui violet circular label"> <%= Offer.all.count %> trades happening now!</a>
-        <%= link_to("See all available trades", trades_path) %>
-        </p>
-        <p><%= link_to("See all trainers", trainers_path)%>
-        </p>
-        
+            <div class="fixed">
+            
+                <ul id="menu-bar">
+
+                   <li style="float:right"> <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
+                        <input type=submit value='logout'>
+                    <% end %>
+                    </li>
+
+                    <li>
+                        <%= form_tag ({controller: 'trainers', action: 'pack_contents', method: 'post'}) do %>
+                        <input type=submit value='Open a pack'>
+                        <% end %></li>
+
+                    <li><%= link_to("Go back to welcome page", root_path) %> </li>
+
+                    <li><%= link_to("See all trainers", trainers_path)%></li>
+
+                    <li> <%= link_to("Choose cards to trade!", trainers_mark_trades_path) %></li>
+
+                    
+                    <li> <%= link_to("See all available trades", trades_path) %> </li>
+                    
+                </ul>
+
+
+
         <div class='album'>
             <h2>Here is your card album!</h2><br>
 
@@ -91,8 +98,8 @@
                                 <img src=<%= offer.offer_card.display_card_image_url_from_binder%>>
                             </div>
 
-                            <div class="content" id="trainer-accept-decline-trade">
-                                    <p> Trainer
+                            <div class="content" >
+                                    <p id="trainer-accept-decline-trade"> Trainer
                                     <% sender = Trainer.find_by(id: trade.sender_id) %>
                                     <%= link_to sender.name, trainer_path(sender) %>
                                     would like to trade their
@@ -129,6 +136,7 @@
                 <% end %>
             </div>
 
+        </div>
         </div>
     </body>
 </html>
