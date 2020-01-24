@@ -59,11 +59,17 @@
                 <%= offer.offer_card.display_card_name_from_binder %>
                 for your 
                  <%= offer.base_card.display_card_name_from_binder %>
+
                 <%= form_with url: trades_accepted_trade_path do |f| %>
                 <%= hidden_field_tag :sender, sender.id %>
                 <%= hidden_field_tag :offer, offer.id %>
                 <%= hidden_field_tag :trade, trade.id %>
-            <input type=submit value='Accept this trade'>
+                <input type=submit value='Accept this trade'>
+                <% end %>
+                <%= form_with url: trades_cancelled_trade_path do |f| %>
+                <%= hidden_field_tag :offer, offer.id %>
+                <%= hidden_field_tag :trade, trade.id %>
+                <input type=submit value='Decline this trade'>
                 <% end %>
                 <br><br>
             <% end %>
