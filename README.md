@@ -1,30 +1,13 @@
-# README
+# Pokemon Trader
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Trade your Pokemon Cards with friends! 
 
-Things you may want to cover:
+-- User stories
 
-* Ruby version
+-- Screenshots
 
-* System dependencies
+-- Tech used
 
-* Configuration
+-- Authors
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-
-pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
-
-spring stop
+-- License 
